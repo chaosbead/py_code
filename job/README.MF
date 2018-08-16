@@ -1,0 +1,31 @@
+项目需求
+抓取51job 数据分析师 招聘信息
+
+url:
+https://search.51job.com/list/000000,000000,0000,00,9,99,%25E6%2595%25B0%25E6%258D%25AE%25E5%2588%2586%25E6%259E%2590%25E5%25B8%2588,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare=
+
+抓取的字段：职位名称，公司名称，职位月薪，工作地点，发布日期，详细页面链接
+
+
+1.创建scrapy项目，首先切换到想要创建项目的目录下
+scrapy startproject 项目名
+scrapy startproject job
+
+2.创建爬虫文件
+cd 项目名
+scrapy genspider 爬虫名 爬虫爬取的链接域名
+scrapy genspider zp 51job.com
+
+3.执行爬虫
+scrapy crawl 爬虫名
+scrapy crawl zp -o zp.jl
+
+
+scrapy目录结构
+
+（1）__init__.py 初始化文件，主要写的是一些项目的初始化信息
+（2）items.py 爬虫项目的数据容器文件，主要用来定义我们要获取的数据
+（3）pipelines.py 管道文件，主要用来对item里面定义的数据进一步加工与处理
+（4）settings.py 项目配置文件，主要为爬虫项目的一些配置信息
+（5）spiders文件夹 文件下放置的是爬虫项目中的爬虫部分相关文件
+
